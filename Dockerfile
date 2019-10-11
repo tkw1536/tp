@@ -11,4 +11,4 @@ COPY --from=build /app/tp /tp
 
 # and set the entry command
 EXPOSE 80
-CMD ["/tr", "0.0.0.0:80"]
+CMD ["/tp", "0.0.0.0:80"]
