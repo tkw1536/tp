@@ -14,9 +14,9 @@ RUN adduser \
     "${USER}"
 
 # build the app
-ADD tp.go /app/tp.go
+ADD echo.go /app/echo.go
 WORKDIR /app/
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app/tp tp.go
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app/echo echo.go
 
 # add it into a scratch image
 FROM scratch
@@ -27,9 +27,9 @@ COPY --from=build /etc/passwd /etc/passwd
 COPY --from=build /etc/group /etc/group
 
 # add the app
-COPY --from=build /app/tp /tp
+COPY --from=build /app/echo /echo
 
 # and set the entry command
 EXPOSE 8080
 USER www-data:www-data
-CMD ["/tp", "0.0.0.0:8080"]
+CMD ["/echo", "0.0.0.0:8080"]
