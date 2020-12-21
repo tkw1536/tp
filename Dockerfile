@@ -1,5 +1,5 @@
-# build the server
-FROM golang:alpine as build
+# build the user permission server
+FROM alpine as permission
 
 # Create www-data
 ENV USER=www-data
@@ -13,6 +13,9 @@ RUN adduser \
     --uid "${UID}" \
     "${USER}"
 
+# build the server
+FROM golang as build
+
 # build the app
 ADD tp.go /app/tp.go
 WORKDIR /app/
@@ -23,8 +26,8 @@ FROM scratch
 WORKDIR /
 
 # add the user
-COPY --from=build /etc/passwd /etc/passwd
-COPY --from=build /etc/group /etc/group
+COPY --from=permission /etc/passwd /etc/passwd
+COPY --from=permission /etc/group /etc/group
 
 # add the app
 COPY --from=build /app/tp /tp

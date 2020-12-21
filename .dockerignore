@@ -1,4 +1,4 @@
-.travis.yml
-LICENSE
-README.md
-testserver
+*
+!go.mod
+!go.sum
+!*.go
