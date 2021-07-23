@@ -2,16 +2,9 @@
 FROM alpine as permission
 
 # Create www-data
-ENV USER=www-data
-ENV UID=82
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    "${USER}"
+RUN set -x ; \
+  addgroup -g 82 -S www-data ; \
+  adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
 
 # build the server
 FROM golang as build
