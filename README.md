@@ -14,6 +14,4 @@ To start it up run:
 docker run -e TARGET=http://example.com -p 8080:8080 tkw01536/tp
 ```
 
-For legacy reasons this image is also available on DockerHub as the automated build [tkw01536/tr](https://hub.docker.com/r/tkw01536/tp/). 
-
 The code is licensed under the Unlicense, hence in the public domain. 
