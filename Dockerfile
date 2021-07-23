@@ -11,6 +11,7 @@ FROM golang as build
 
 # build the app
 ADD tp.go /app/tp.go
+ADD go.mod /app/go.mod
 WORKDIR /app/
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app/tp tp.go
 

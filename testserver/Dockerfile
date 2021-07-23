@@ -11,6 +11,7 @@ FROM golang as build
 
 # build the app
 ADD echo.go /app/echo.go
+ADD go.mod /app/go.mod
 WORKDIR /app/
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app/echo echo.go
 
