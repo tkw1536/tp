@@ -14,4 +14,6 @@ To start it up run:
 docker run -e TARGET=http://example.com -p 8080:8080 tkw01536/tp
 ```
 
+Additionally an environment variable `ROOT` is supported, which allows redirecting requests to the root URL.
+
 The code is licensed under the Unlicense, hence in the public domain. 
